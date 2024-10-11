@@ -19,6 +19,18 @@ public class User {
     @JoinColumn (name = "rolId")
     private Rol rol;
 
+    // Constructor 
+
+    public User (String name, String lastName, byte age, boolean state, Rol rol) {
+        super();
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
+        this.state = state;
+        this.rol = rol;
+    }
+
+    //Getters and setters
     public long getId() {
         return id;
     }
