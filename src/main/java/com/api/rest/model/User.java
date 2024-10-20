@@ -3,7 +3,7 @@ package com.api.rest.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "user-api")
+@Table (name = "user-model")
 public class User {
 
     @Id 
@@ -16,7 +16,7 @@ public class User {
     private boolean state = true;
 
     @ManyToOne
-    @JoinColumn (name = "rolId")
+    @JoinColumn (name = "rol_id")
     private Rol rol;
 
     // Constructor 
