@@ -3,7 +3,7 @@ package com.api.rest.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table (name = "user-model")
+@Table (name = "user_model")
 public class User {
 
     @Id 
@@ -16,11 +16,11 @@ public class User {
     private boolean state = true;
 
     @ManyToOne
-    @JoinColumn (name = "rol_id")
+    @JoinColumn (name = "id")
     private Rol rol;
 
     // Constructor 
-
+    public User(){}
     public User (String name, String lastName, byte age, boolean state, Rol rol) {
         super();
         this.name = name;
@@ -29,6 +29,7 @@ public class User {
         this.state = state;
         this.rol = rol;
     }
+
 
     //Getters and setters
     public long getId() {

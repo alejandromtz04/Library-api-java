@@ -1,6 +1,7 @@
 package com.api.rest.model;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.*;
 
 import jakarta.persistence.*;
 
@@ -15,8 +16,9 @@ public class Rol {
     private boolean state = true;
 
     @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
-    private List<User> user = new ArrayList<>();
+    private Set<User> users = new HashSet<>();
 
+    public Rol (){}
     public Rol (String rol, boolean state) {
         super();
         this.rol = rol;
@@ -42,6 +44,13 @@ public class Rol {
     }
     public void setState(boolean state) {
         this.state = state;
+    }
+
+    public Set<User> getUsers(){
+        return users;
+    }
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 }
 
