@@ -16,7 +16,7 @@ public class User {
     private boolean state = true;
 
     @ManyToOne
-    @JoinColumn (name = "id")
+    @JoinColumn (name = "rol_id")
     private Rol rol;
 
     // Constructor 

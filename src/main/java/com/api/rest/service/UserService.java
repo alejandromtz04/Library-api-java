@@ -22,8 +22,12 @@ public class UserService  {
     public User createUser(User userDTO) {
         try {
 
+            if (userDTO == null) {
+                throw  new IllegalArgumentException("The object userDTO is null");
+            }
+
             Rol rol = rolRepository.findById(userDTO.getRol().getId())
-                    .orElseThrow(() -> new IllegalArgumentException("Rol " + userDTO.getRol() + "no encontrado"));
+                    .orElseThrow(() -> new IllegalArgumentException("Rol " + userDTO.getRol() + " no encontrado"));
 
             User user = new User();
 
@@ -37,7 +41,7 @@ public class UserService  {
 
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
-            throw new RuntimeException("Error al crear el usuario: " + ex );
+            throw new RuntimeException("Error creating user: " + ex );
         }
     }
 }
