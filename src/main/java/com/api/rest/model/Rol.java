@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -16,6 +17,7 @@ public class Rol {
     private boolean state = true;
 
     @OneToMany(mappedBy = "rol", cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<User> users = new HashSet<>();
 
     public Rol (){}

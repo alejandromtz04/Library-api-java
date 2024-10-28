@@ -1,5 +1,6 @@
 package com.api.rest.service;
 
+import com.api.rest.dto.RolDTO;
 import com.api.rest.model.Rol;
 import com.api.rest.repository.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,18 +11,19 @@ public class RolService {
     @Autowired
     private RolRepository rolRepository;
 
-    public Rol createRol(Rol rolDTO) {
+    public Rol createRol(RolDTO rolDTO) {
         try {
             if (rolDTO == null) {
                 throw new IllegalArgumentException("The object rolDTO is null");
             }
-
+/*
             if (rolRepository.existByRol(rolDTO.getRol())) {
                 throw new IllegalArgumentException("The rol " + rolDTO.getRol() + " already exist");
             }
-
+*/
             Rol rol = new Rol();
-            rol.setRol(rol.getRol());
+            rol.setRol(rolDTO.getRol());
+            rol.setState(true);
 
             System.out.println("Rol created successfully");
             return rolRepository.save(rol);
