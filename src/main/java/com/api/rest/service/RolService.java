@@ -1,10 +1,13 @@
 package com.api.rest.service;
 
 import com.api.rest.dto.RolDTO;
+import com.api.rest.customExceptions.RoleAlreadyExistException;
 import com.api.rest.model.Rol;
 import com.api.rest.repository.RolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class RolService {
@@ -16,11 +19,11 @@ public class RolService {
             if (rolDTO == null) {
                 throw new IllegalArgumentException("The object rolDTO is null");
             }
-/*
-            if (rolRepository.existByRol(rolDTO.getRol())) {
-                throw new IllegalArgumentException("The rol " + rolDTO.getRol() + " already exist");
+
+            if (rolRepository.findByRol(rolDTO.getRol()).isPresent()) {
+                throw new RoleAlreadyExistException("A role with the same name " + rolDTO.getRol()+ " already exist");
             }
-*/
+
             Rol rol = new Rol();
             rol.setRol(rolDTO.getRol());
             rol.setState(true);
