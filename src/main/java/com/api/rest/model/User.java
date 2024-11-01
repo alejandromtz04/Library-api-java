@@ -15,19 +15,19 @@ public class User {
     private byte age; 
     private boolean state = true;
 
-    @ManyToOne
-    @JoinColumn (name = "rol_id")
-    private Rol rol;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn (name = "userContactId", referencedColumnName = "id")
+    private UserContact userContact;
 
     // Constructor 
     public User(){}
-    public User (String name, String lastName, byte age, boolean state, Rol rol) {
+    public User (String name, String lastName, byte age, boolean state, UserContact userContact) {
         super();
         this.name = name;
         this.lastName = lastName;
         this.age = age;
         this.state = state;
-        this.rol = rol;
+        this.userContact = userContact;
     }
 
 
@@ -67,10 +67,10 @@ public class User {
         this.state = state;
     }
 
-    public Rol getRol(){
-        return rol;
+    public UserContact getRol(){
+        return userContact;
     }
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setRol(UserContact userContact) {
+        this.userContact = userContact;
     }
 }
